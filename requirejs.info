@@ -1,0 +1,6 @@
+name = RequireJS
+description = "Load AMD Modules with require js."
+package = development
+version = 0.1
+core = 7.x
+files[] = requirejs.module

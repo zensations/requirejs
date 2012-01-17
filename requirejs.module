@@ -1,0 +1,17 @@
+<?php
+function requirejs_library() {
+  return array(
+    'requirejs' => array(
+      'version' => '1.0.4',
+      'js' => array(
+        drupal_get_path('module', 'requirejs') . '/requirejs.js' => array(),
+        'sites/all/libraries/requirejs/require.js' => array(),
+      ),
+    ),
+  );
+}
+
+function requirejs_init() {
+  $paths = module_invoke_all('requirejs_paths');
+  drupal_add_js(array('requirejs' => array('paths' => $paths)), 'setting');
+}
