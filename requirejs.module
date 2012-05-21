@@ -13,6 +13,8 @@ function requirejs_library() {
 
 function requirejs_init() {
   $paths = module_invoke_all('requirejs_paths');
-  drupal_add_js(array('requirejs' => array('paths' => $paths)), 'setting');
-  drupal_add_library('requirejs', 'requirejs');
+  drupal_add_js(array('requirejs' => array(
+    'baseUrl' => url('', array('absolute' => TRUE)),
+    'paths' => $paths,
+  )), 'setting');
 }
