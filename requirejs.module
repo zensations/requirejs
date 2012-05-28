@@ -1,20 +1,33 @@
 <?php
+/**
+ * @file
+ * API module to use requirejs in drupal module.
+ */
+
+/**
+ * Implements hook_library().
+ */
 function requirejs_library() {
   return array(
     'requirejs' => array(
       'version' => '1.0.4',
       'js' => array(
         drupal_get_path('module', 'requirejs') . '/requirejs.js' => array(),
-        'sites/all/libraries/requirejs/require.js' => array(),
+        libraries_get_path('requirejs') . '/require.js' => array(),
       ),
     ),
   );
 }
 
+/**
+ * Implements hook_init().
+ */
 function requirejs_init() {
   $paths = module_invoke_all('requirejs_paths');
-  drupal_add_js(array('requirejs' => array(
-    'baseUrl' => url('', array('absolute' => TRUE)),
-    'paths' => $paths,
-  )), 'setting');
+  drupal_add_js(array(
+    'requirejs' => array(
+      'baseUrl' => url('', array('absolute' => TRUE)),
+      'paths' => $paths,
+    ),
+  ), 'setting');
 }

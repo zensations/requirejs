@@ -4,3 +4,4 @@ package = development
 version = 0.1
 core = 7.x
 files[] = requirejs.module
+dependencies[] = libraries
